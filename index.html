@@ -60,7 +60,15 @@
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
     .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; }
 
-    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, 0.78); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
+    /* PANEL CENTRAL CON MENOS TRANSPARENCIA (MÁS SÓLIDO) */
+    .sheet { 
+      border: 1px solid var(--border); 
+      border-radius: var(--r-lg); 
+      box-shadow: var(--shadow); 
+      background: rgba(11, 16, 32, 0.92); /* Ajustado de 0.78 a 0.92 */
+      backdrop-filter: blur(12px); 
+      padding: clamp(16px, 2.8vw, 24px); 
+    }
     
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
