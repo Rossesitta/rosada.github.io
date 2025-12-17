@@ -70,13 +70,11 @@
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
     .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Cinzel', serif; }
 
-    /* Galería y Zoom */
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
     .gallery-item:hover img { transform: scale(1.05); }
 
-    /* Lightbox / Zoom Overlay */
     #zoom-overlay {
       position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000;
       display: none; justify-content: center; align-items: center; cursor: zoom-out;
@@ -114,7 +112,7 @@
       </div>
 
       <div class="controls">
-        <button class="btn" id="copyId">Copiar código</button>
+        <button class="btn" id="copyId">Copiar código de amig@</button>
         <button class="btn" id="toggleSnow">Nieve</button>
         <div class="tabs" role="tablist">
           <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Perfil</button>
@@ -134,7 +132,7 @@
           </div>
           <div>
             <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px;">Rose <span class="chip" style="float: right;">ID: 1100011</span></h2>
-            <div style="margin-bottom: 20px;"><span class="pill">Cryo Element</span></div>
+            <div style="margin-bottom: 20px;"><span class="pill">Cryo</span></div>
             <dl>
               <div class="info">
                 <dt>Acerca de mí</dt>
@@ -180,7 +178,6 @@
   </div>
 
   <script>
-    // Sistema de Pestañas
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
@@ -191,7 +188,6 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
-    // Sistema de Zoom
     const overlay = document.getElementById('zoom-overlay');
     const zoomImg = document.getElementById('zoom-img');
     document.querySelectorAll('.zoomable').forEach(img => {
@@ -201,15 +197,13 @@
       });
     });
 
-    // Copiar ID
     document.getElementById('copyId').addEventListener('click', async () => {
       await navigator.clipboard.writeText("/f1100011 Rose");
       const btn = document.getElementById('copyId'); 
       btn.innerText = '¡Copiado!'; 
-      setTimeout(() => btn.innerText = 'Copiar código', 1500);
+      setTimeout(() => btn.innerText = 'Copiar código de amig@', 1500);
     });
 
-    // Nieve
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
