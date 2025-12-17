@@ -14,8 +14,8 @@
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
-      --text: #ffcfdf; /* ROSA PASTEL PRINCIPAL */
-      --muted: #c3aadd; /* PÚRPURA PASTEL PARA DESCRIPCIONES */
+      --text: #ffcfdf; /* ROSA PASTEL */
+      --muted: #c3aadd; /* PÚRPURA PASTEL */
       --border: rgba(255, 255, 255, .18);
       --glass: rgba(255, 255, 255, .06);
       --glass-2: rgba(255, 255, 255, .1);
@@ -42,10 +42,20 @@
     .brand { display: flex; align-items: center; gap: 14px; }
     .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;}
 
-    .title h1 { margin: 0; font-family: 'Cinzel', serif; font-weight: 800; letter-spacing: 2px; font-size: clamp(22px, 2.4vw, 32px); color: var(--text); text-transform: uppercase; }
+    /* TITULO CON GLOW ROSA */
+    .title h1 { 
+      margin: 0; 
+      font-family: 'Cinzel', serif; 
+      font-weight: 800; 
+      letter-spacing: 3px; 
+      font-size: clamp(22px, 2.4vw, 32px); 
+      color: var(--text); 
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 207, 223, 0.8), 0 0 20px rgba(255, 207, 223, 0.4); 
+    }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
 
-    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); box-shadow: var(--shadow); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
+    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
@@ -66,12 +76,9 @@
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
-    .friend:hover { transform: translateY(-2px); background: var(--glass-2); border-color: var(--text); }
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
-    
-    /* FUENTES DE AMIGOS NORMALIZADAS */
     .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
-    .friend small { color: var(--muted); font-family: 'Montserrat', sans-serif; font-size: 12px; }
+    .friend small { color: var(--muted); font-size: 12px; }
 
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
@@ -105,9 +112,7 @@
       <div class="brand">
         <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="48"></div>
         <div class="title">
-          <h1>Rose</h1>
-          <p>FEX Manager • ID 1100011</p>
-        </div>
+          <h1>Rose</h1> <p>FEX Manager</p> </div>
       </div>
 
       <div class="controls">
@@ -130,7 +135,7 @@
             </div>
           </div>
           <div>
-            <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px;">Rose <span class="chip" style="float: right;">ID: 1100011</span></h2>
+            <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px; text-shadow: 0 0 8px rgba(255,207,223,0.5);">Rose</h2>
             <div style="margin-bottom: 20px;"><span class="pill">Cryo</span></div>
             <dl>
               <div class="info">
