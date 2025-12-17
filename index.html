@@ -17,7 +17,7 @@
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
-      --text: #FFB7CE; /* Rosa Pastel para el nombre */
+      --text: #e9eef7;
       --muted: #a9b2c9;
       --border: rgba(255, 255, 255, .18);
       --glass: rgba(255, 255, 255, .06);
@@ -28,8 +28,8 @@
       --gold-2: rgb(184, 148, 88);
       --gold-ghost: rgba(215, 184, 118, .16);
       
-      /* Nuevo Elemento: Anemo */
-      --anemo: #74C2A8; 
+      /* Elemento Anemo (Viento) */
+      --anemo: #74C2A8;
       --anemo-ghost: rgba(116, 194, 168, .18);
 
       --r-lg: 18px;
@@ -37,26 +37,12 @@
       --r-sm: 10px;
     }
 
-    /* Estilos para Amigos y Links en Púrpura */
-    .friend h3 {
-      color: #8E44AD !important; /* Púrpura oscuro */
-      margin: 0 0 4px;
-      font-weight: 800;
-      font-size: 16px;
-    }
+    /* Colores personalizados */
+    .title h1, .name h2 { color: #FFB7CE !important; } /* Nombres en Rosa */
+    .friend h3 { color: #8E44AD !important; } /* Nombres amigos Púrpura Oscuro */
+    .friend small { color: #7D3C98 !important; font-style: italic; } /* Apodos Púrpura */
+    .list a { color: #8E44AD !important; } /* Links en Púrpura */
 
-    .friend small {
-      color: #7D3C98 !important; /* Púrpura descriptivo */
-      font-style: italic;
-    }
-
-    .list a {
-      color: #8E44AD !important; /* Links en púrpura */
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* Resto del CSS original mantenido */
     html, body { height: 100% }
     body {
       margin: 0;
@@ -70,47 +56,56 @@
     .header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
     .brand { display: flex; align-items: center; gap: 14px; }
     .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); }
-    .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 32px); color: #FFB7CE; }
+    .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 32px); }
+    .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     
     .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); }
+    
+    /* Tabs */
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; }
     .tab[aria-selected="true"] { background: rgba(215, 184, 118, .2); box-shadow: inset 0 0 0 1px var(--gold-ghost); }
+
+    .panels { margin-top: 16px; }
+    [role="tabpanel"] { display: none; animation: fade .35s ease both; }
+    [role="tabpanel"][data-active="true"] { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
 
     .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); background: rgba(255,255,255,.05); backdrop-filter: blur(12px); padding: 24px; }
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     @media (max-width: 950px) { .hero { grid-template-columns: 1fr; } }
 
-    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle, var(--anemo-ghost), transparent); }
+    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 20% 15%, var(--anemo-ghost), transparent); }
     .stage .element { position: absolute; top: 14px; left: 14px; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); border: 1px solid var(--border); }
-    .stage .element svg { fill: var(--anemo); width: 28px; height: 28px; }
+    .stage .element svg { width: 28px; height: 28px; fill: var(--anemo); }
     .stage .hero-img { position: absolute; inset: 0; display: grid; place-items: end center; pointer-events: none; }
     .stage .hero-img .img { max-width: 92%; border-radius: 50%; }
 
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; font-weight: 800; background: rgba(255,255,255,.06); border: 1px solid var(--border); }
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; background: rgba(255,255,255,.03); transition: 0.2s; }
-    .avatar { width: 56px; height: 56px; border-radius: 12px; background-size: cover; }
     
-    [role="tabpanel"] { display: none; }
-    [role="tabpanel"][data-active="true"] { display: block; }
+    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; background: rgba(255,255,255,.03); transition: 0.2s; }
+    .avatar { width: 56px; height: 56px; border-radius: 12px; background-size: cover; background-position: center; }
+
+    .list { padding: 14px; border: 1px solid var(--border); border-radius: var(--r-lg); background: rgba(255,255,255,.02); }
   </style>
 </head>
 
 <body>
   <canvas id="snow"></canvas>
+
   <div class="wrap">
     <div class="header">
       <div class="brand">
         <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="36" height="36" style="border-radius:50%;"></div>
         <div class="title">
           <h1>Rose</h1>
-          <p>FEX Manager • ID <span id="id-text">1100011</span></p>
+          <p>FEX Manager • ID <span>1100011</span></p>
         </div>
       </div>
       <div class="controls">
-        <button class="btn" id="copyId">Copiar código de Amiga</button>
+        <button class="btn" id="copyId">Copiar código</button>
         <button class="btn" id="toggleSnow">Nieve</button>
         <div class="tabs" role="tablist">
           <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Perfil</button>
@@ -120,75 +115,4 @@
       </div>
     </div>
 
-    <div class="panels">
-      <section class="sheet" role="tabpanel" id="panel-profile" data-active="true">
-        <div class="hero">
-          <div class="stage">
-            <div class="element">
-              <svg viewBox="0 0 24 24"><path d="M12,11L12.1,10.9C12.3,10.7 12.4,10.5 12.5,10.2C12.7,9.6 12.4,8.9 11.8,8.6C11.1,8.3 10.4,8.6 10.1,9.2C10,9.5 10,9.7 10,10L8,10C8,9.2 8.3,8.5 8.9,8C10.2,7 12.1,7.2 13.1,8.5C13.5,9 13.7,9.7 13.7,10.3C13.6,11.2 13.1,12 12.4,12.5L11.1,13.4C10.7,13.7 10.5,14.1 10.5,14.5V15H8.5V14.5C8.5,13.5 9,12.7 9.8,12.1L11.1,11.2C11.3,11.1 11.4,11 11.5,10.8L12,11M11,18H13V20H11V18Z"/></svg>
-            </div>
-            <div class="hero-img"><img class="img" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" /></div>
-          </div>
-          <div>
-            <h2 style="font-family:Cinzel; color:#FFB7CE;">Rose</h2>
-            <div style="margin-bottom:15px;"><span class="pill" style="color:var(--anemo); border-color:var(--anemo);">Anemo</span> <span class="pill">Polearm</span></div>
-            <div class="sheet" style="padding:15px; margin-bottom:15px;">
-                <p style="margin:0; font-size:14px; color:var(--muted);">Sigue los pétalos de rosa donde vayan.</p>
-            </div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <span class="pill">🎂 22 de diciembre</span>
-                <span class="pill">♑ Capricornio</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sheet" role="tabpanel" id="panel-friends">
-        <div class="grid">
-          <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank">
-            <div class="avatar" style="background-image:url('https://xatimg.com/image/iUI8sm879Nes.png')"></div>
-            <div><h3>CheeseOnToast</h3><small>Cheese</small></div>
-          </a>
-          <a class="friend" href="https://xat.me/Lenin" target="_blank">
-            <div class="avatar" style="background-image:url('https://xatimg.com/image/2L3sZhbD1x0u.png')"></div>
-            <div><h3>Lenin</h3></div>
-          </a>
-          <a class="friend" href="https://xat.me/Selene" target="_blank">
-            <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png')"></div>
-            <div><h3>Selene</h3><small>Seelie</small></div>
-          </a>
-        </div>
-      </section>
-
-      <section class="sheet" role="tabpanel" id="panel-gallery">
-        <div class="list">
-          <h4 style="color:#8E44AD;">Enlaces / Roles</h4>
-          <ul style="list-style:none; padding:0;">
-            <li><a href="https://fexbots.com/">FEXBots oficial sitio</a></li>
-            <li><a href="https://xat.com/fexbots">FEXBots chat (Manager)</a></li>
-            <li><a href="https://flickr.com/photos/rosesita/albums">Mi galería de diseños</a></li>
-          </ul>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <script>
-    // Script básico para Tabs y Nieve (basado en el original)
-    const tabs = document.querySelectorAll('.tab');
-    const panels = document.querySelectorAll('[role="tabpanel"]');
-    tabs.forEach(t => t.addEventListener('click', () => {
-      tabs.forEach(tab => tab.setAttribute('aria-selected', 'false'));
-      panels.forEach(p => p.dataset.active = 'false');
-      t.setAttribute('aria-selected', 'true');
-      document.getElementById(t.getAttribute('aria-controls')).dataset.active = 'true';
-    }));
-
-    // Funcionalidad de Copiar ID
-    document.getElementById('copyId').addEventListener('click', () => {
-      navigator.clipboard.writeText("/f1100011 Rose");
-      alert('¡Código copiado!');
-    });
-  </script>
-</body>
-</html>
+    <div class
