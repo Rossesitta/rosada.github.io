@@ -14,7 +14,7 @@
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
-      --text: #b33951; /* ROSA ROJIZO PARA TÍTULOS Y FRASES */
+      --text: #ffcfdf; /* ROSA PASTEL PRINCIPAL */
       --muted: #c3aadd; /* PÚRPURA PASTEL PARA DESCRIPCIONES */
       --border: rgba(255, 255, 255, .18);
       --glass: rgba(255, 255, 255, .06);
@@ -55,7 +55,7 @@
     
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
-    .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(179, 57, 81, 0.2); margin-bottom: 30px; cursor: pointer;}
+    .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(255, 207, 223, 0.2); margin-bottom: 30px; cursor: pointer;}
 
     .info { padding: 15px; border-radius: var(--r-md); background: rgba(255,255,255,.03); border-left: 3px solid var(--text); margin-bottom: 12px;}
     .info dt { font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 600; letter-spacing: 1px; }
@@ -68,8 +68,10 @@
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
     .friend:hover { transform: translateY(-2px); background: var(--glass-2); border-color: var(--text); }
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
-    .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Cinzel', serif; }
-    .friend small { color: var(--muted); }
+    
+    /* FUENTES DE AMIGOS NORMALIZADAS */
+    .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
+    .friend small { color: var(--muted); font-family: 'Montserrat', sans-serif; font-size: 12px; }
 
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
