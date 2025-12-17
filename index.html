@@ -15,7 +15,7 @@
       --bg-1: #0b1020;
       --bg-2: #121a31;
       
-      /* CAMBIO A ROSA ROJIZO */
+      /* TODOS LOS TEXTOS A ROSA ROJIZO */
       --text: #b33951; 
       --muted: #c3aadd; 
       --border: rgba(255, 255, 255, .18);
@@ -29,7 +29,6 @@
       
       --tab-active: #4a306d; 
       
-      /* CAMBIO A CRYO */
       --cryo: #90e0ef;
       --cryo-ghost: rgba(144, 224, 239, .15);
 
@@ -40,7 +39,7 @@
 
     body {
       margin: 0;
-      color: #fff; /* Texto general en blanco para legibilidad */
+      color: var(--text); /* Todo el texto base ahora es rosa rojizo */
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
     }
@@ -52,15 +51,15 @@
     .brand { display: flex; align-items: center; gap: 14px; }
     .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;}
 
-    /* TITULOS EN ROSA ROJIZO */
-    .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; letter-spacing: .6px; font-size: clamp(22px, 2.4vw, 32px); color: var(--text); }
-    .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+    /* TÍTULO ELEGANTE */
+    .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; letter-spacing: 1.5px; font-size: clamp(22px, 2.4vw, 32px); color: var(--text); text-transform: uppercase; }
+    .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; font-family: Cinzel, serif; }
 
     .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .btn { border: 1px solid var(--border); background: var(--glass); color: #fff; padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); box-shadow: var(--shadow); }
+    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); box-shadow: var(--shadow); font-family: Cinzel, serif; font-size: 12px; }
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .tab { appearance: none; border: 0; background: transparent; color: #fff; font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; }
+    .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: Cinzel, serif; }
     .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
     .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, 0.7); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
@@ -68,35 +67,36 @@
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
     
-    /* MANTIENE TU AVATAR CIRCULAR */
     .stage .hero-img .img { width: auto; max-width: 450px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 3px solid var(--border); box-shadow: 0 0 20px rgba(0,0,0,0.5); margin-bottom: 20px;}
 
     .stage .stars { position: absolute; top: 14px; right: 14px; display: flex; gap: 4px; z-index: 2; }
     .stage .stars svg { width: 20px; height: 20px; fill: var(--gold); }
 
     .info { padding: 12px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border: 1px solid var(--border); margin-bottom: 10px;}
-    .info dt { font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .info dt { font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-family: Cinzel, serif; letter-spacing: 1px; }
     .info dd { margin: 0; font-family: Cinzel, serif; font-weight: 800; color: var(--text); }
 
-    /* ETIQUETA CRYO */
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; }
-    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--muted); font-size: 13px; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; font-family: Cinzel, serif; font-size: 12px; }
+    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--text); font-size: 12px; font-family: Cinzel, serif; }
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: #fff; background: var(--glass); transition: 0.2s; }
+    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
     .friend:hover { transform: translateY(-2px); background: var(--glass-2); }
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
-    .friend h3 { margin: 0; font-size: 16px; color: #fff; }
-    .friend small { color: var(--muted); display: block; font-size: 12px; }
+    .friend h3 { margin: 0; font-size: 14px; color: var(--text); font-family: Cinzel, serif; font-weight: 700; }
+    .friend small { color: var(--muted); display: block; font-size: 11px; font-family: Cinzel, serif; }
 
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
 
+    /* SECCIONES ELEGANTES */
+    h2, h4 { font-family: Cinzel, serif; text-transform: uppercase; letter-spacing: 1px; }
+
     [role="tabpanel"] { display: none; animation: fade .35s ease both; }
     [role="tabpanel"][data-active="true"] { display: block; }
     @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
-    .credits { margin-top: 14px; color: var(--muted); font-size: 12px; text-align: center; }
+    .credits { margin-top: 14px; color: var(--muted); font-size: 12px; text-align: center; font-family: Cinzel, serif; }
     .credits a { color: var(--gold); text-decoration: none; }
   </style>
 </head>
@@ -142,7 +142,7 @@
           </div>
 
           <div>
-            <h2 style="font-family: Cinzel; color: var(--text);">Rose <span class="chip" style="font-family: monospace; color: #fff;">ID: 1100011</span></h2>
+            <h2 style="color: var(--text);">Rose <span class="chip">ID: 1100011</span></h2>
             <div style="margin: 15px 0;"><span class="pill">Cryo</span></div>
             <dl>
               <div class="info">
@@ -153,7 +153,7 @@
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
               <span class="chip">🎂 22 de diciembre</span>
               <span class="chip">♑ Capricornio</span>
-              <span class="chip">🎮 Genshin impact, Fortnite, Honkai star rail...</span>
+              <span class="chip">🎮 Genshin impact...</span>
             </div>
           </div>
         </div>
@@ -190,9 +190,9 @@
           <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png"></div>
         </div>
         <div style="margin-top:20px; padding:15px; background:var(--glass); border-radius:10px;">
-           <h4 style="margin:0 0 10px 0; font-family:Cinzel;">Enlaces</h4>
-           <a href="https://xat.me/austin" target="_blank" style="color:var(--gold); text-decoration:none; display:block; margin-bottom:5px;">✦ Created by Austin</a>
-           <a href="https://xat.me/FEX" target="_blank" style="color:var(--gold); text-decoration:none; display:block;">✦ FEX Oficial</a>
+           <h4 style="margin:0 0 10px 0;">Enlaces</h4>
+           <a href="https://xat.me/austin" target="_blank" style="color:var(--gold); text-decoration:none; display:block; margin-bottom:5px; font-family: Cinzel, serif; font-size: 12px;">✦ Created by Austin</a>
+           <a href="https://xat.me/FEX" target="_blank" style="color:var(--gold); text-decoration:none; display:block; font-family: Cinzel, serif; font-size: 12px;">✦ FEX Oficial</a>
         </div>
       </section>
     </div>
