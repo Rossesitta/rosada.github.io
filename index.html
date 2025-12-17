@@ -60,13 +60,13 @@
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
     .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; }
 
-    /* PANEL CENTRAL AL 45% DE TRANSPARENCIA */
+    /* PANEL CENTRAL AL 30% DE TRANSPARENCIA */
     .sheet { 
       border: 1px solid var(--border); 
       border-radius: var(--r-lg); 
       box-shadow: var(--shadow); 
-      background: rgba(11, 16, 32, 0.45); /* AJUSTADO AL 45% */
-      backdrop-filter: blur(15px); 
+      background: rgba(11, 16, 32, 0.3); /* AJUSTADO AL 30% */
+      backdrop-filter: blur(10px); 
       padding: clamp(16px, 2.8vw, 24px); 
     }
     
@@ -189,7 +189,6 @@
           <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png" class="zoomable"></div>
           <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" class="zoomable"></div>
         </div>
-
         <div class="links-box">
            <h4>Enlaces</h4>
            <a href="https://xat.me/austin" target="_blank">✦ Created by Austin</a>
@@ -201,6 +200,7 @@
   </div>
 
   <script>
+    /* El script de pestañas, zoom y nieve permanece igual */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
