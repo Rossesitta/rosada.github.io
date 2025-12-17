@@ -14,8 +14,8 @@
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
-      --text: #ffcfdf; /* ROSA PASTEL */
-      --muted: #c3aadd; /* PÚRPURA PASTEL */
+      --text: #ffcfdf; 
+      --muted: #c3aadd; 
       --border: rgba(255, 255, 255, .18);
       --glass: rgba(255, 255, 255, .06);
       --glass-2: rgba(255, 255, 255, .1);
@@ -42,7 +42,6 @@
     .brand { display: flex; align-items: center; gap: 14px; }
     .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;}
 
-    /* TITULO CON GLOW ROSA */
     .title h1 { 
       margin: 0; 
       font-family: 'Cinzel', serif; 
@@ -112,7 +111,9 @@
       <div class="brand">
         <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="48"></div>
         <div class="title">
-          <h1>Rose</h1> <p>FEX Manager</p> </div>
+          <h1>Rose</h1>
+          <p>FEX Manager</p>
+        </div>
       </div>
 
       <div class="controls">
@@ -136,7 +137,10 @@
           </div>
           <div>
             <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px; text-shadow: 0 0 8px rgba(255,207,223,0.5);">Rose</h2>
-            <div style="margin-bottom: 20px;"><span class="pill">Cryo</span></div>
+            <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+                <span class="pill">Cryo</span>
+                <span class="chip">ID: 1100011</span>
+            </div>
             <dl>
               <div class="info">
                 <dt>Acerca de mí</dt>
