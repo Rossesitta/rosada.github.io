@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rose Profile</title>
+  <title>Rose</title>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap"
@@ -14,18 +14,22 @@
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
-      --text: #fff;
-      --muted: #a1a1aa;
-      --border: rgba(255, 255, 255, .1);
-      --glass: rgba(255, 255, 255, .05);
+      --text: #ffcfdf; /* ROSA PASTEL */
+      --muted: #c3aadd; /* PÚRPURA PASTEL */
+      --border: rgba(255, 255, 255, .18);
+      --glass: rgba(255, 255, 255, .06);
       --glass-2: rgba(255, 255, 255, .1);
-      --shadow: 0 10px 30px rgba(0, 0, 0, .3);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+
       --gold: rgb(215, 184, 118);
-      /* NUEVO COLOR: Rosa Rojizo Elegante */
-      --rose-red: #b33951; 
-      --tab-active: #27272a;
+      --gold-2: rgb(184, 148, 88);
+      --gold-ghost: rgba(215, 184, 118, .16);
+      
+      /* COLOR PÚRPURA OSCURO PARA PESTAÑAS */
+      --tab-active: #4a306d; 
       --anemo: #7af2c1;
       --anemo-ghost: rgba(122, 242, 193, .15);
+
       --r-lg: 18px;
       --r-md: 14px;
       --r-sm: 10px;
@@ -34,9 +38,8 @@
     body {
       margin: 0;
       color: var(--text);
-      font-family: 'Inter', sans-serif;
-      background: #090e1a;
-      overflow-x: hidden;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
     }
 
     #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
@@ -44,72 +47,53 @@
 
     .header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
     .brand { display: flex; align-items: center; gap: 14px; }
-    .crest { 
-        width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; 
-        background: radial-gradient(80% 80% at 30% 20%, rgba(179, 57, 81, .4), rgba(255, 255, 255, .04)); 
-        border: 1px solid var(--rose-red); box-shadow: var(--shadow); 
-    }
+    .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;}
 
-    /* TITULOS ELEGANTES */
-    .title h1 { 
-        margin: 0; 
-        font-family: 'Cinzel', serif; 
-        font-weight: 800; 
-        letter-spacing: 1px; 
-        font-size: clamp(22px, 2.4vw, 32px); 
-        color: var(--rose-red); /* Texto rosa rojizo */
-    }
-    .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; font-family: 'Cinzel', serif; }
+    .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; letter-spacing: .6px; font-size: clamp(22px, 2.4vw, 32px); color: var(--text); }
+    .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 
     .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); }
+    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); box-shadow: var(--shadow); }
 
-    /* PESTAÑAS ELEGANTES */
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .tab { 
-        appearance: none; border: 0; background: transparent; color: var(--text); 
-        font-family: 'Cinzel', serif; /* Fuente elegante */
-        font-weight: 700; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; 
-    }
-    .tab[aria-selected="true"] { background: var(--rose-red); color: #fff; }
+    .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; }
+    
+    .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, .5); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
+    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, 0.7); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
     
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
-    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, rgba(179, 57, 81, .15), transparent 70%); }
-    .stage .img { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: auto; height: 110%; object-fit: contain; pointer-events: none; }
+    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--anemo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
+    .stage .hero-img .img { width: auto; max-width: 450px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 3px solid var(--border); box-shadow: 0 0 20px rgba(0,0,0,0.5); margin-bottom: 20px;}
+
     .stage .stars { position: absolute; top: 14px; right: 14px; display: flex; gap: 4px; z-index: 2; }
-    .stage .stars svg { width: 20px; height: 20px; fill: var(--rose-red); }
+    .stage .stars svg { width: 20px; height: 20px; fill: var(--gold); }
 
-    .info dt { font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-family: 'Cinzel', serif; }
-    .info dd { margin: 0; font-family: 'Cinzel', serif; font-weight: 800; color: var(--rose-red); }
+    .info { padding: 12px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border: 1px solid var(--border); margin-bottom: 10px;}
+    .info dt { font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .info dd { margin: 0; font-family: Cinzel, serif; font-weight: 800; color: var(--text); }
 
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: rgba(179, 57, 81, .15); border: 1px solid var(--rose-red); color: var(--rose-red); text-transform: uppercase; font-family: 'Cinzel', serif; font-size: 12px; }
-    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--muted); font-size: 13px; font-family: 'Cinzel', serif; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: var(--anemo-ghost); border: 1px solid var(--anemo); color: var(--anemo); text-transform: uppercase; }
+    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--muted); font-size: 13px; }
 
-    /* AMIGOS */
+    /* Friends Grid Restaurado con descripciones */
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.3s; }
-    .friend:hover { border-color: var(--rose-red); background: rgba(179, 57, 81, .05); }
-    .friend h3 { margin: 0; font-size: 15px; font-family: 'Cinzel', serif; }
+    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
+    .friend:hover { transform: translateY(-2px); background: var(--glass-2); }
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
+    .friend h3 { margin: 0; font-size: 16px; color: var(--text); }
+    .friend small { color: var(--muted); display: block; font-size: 12px; }
 
-    /* GALERIA CON ZOOM */
-    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .gallery-item { 
-      position: relative; aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: visible; cursor: zoom-in;
-    }
-    .gallery-item img { 
-      width: 100%; height: 100%; object-fit: cover; border-radius: var(--r-md); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .gallery-item.zoomed { z-index: 100; cursor: zoom-out; }
-    .gallery-item.zoomed img { transform: scale(1.8); box-shadow: 0 10px 50px rgba(0,0,0,0.8); }
+    /* Galería */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
 
     [role="tabpanel"] { display: none; animation: fade .35s ease both; }
     [role="tabpanel"][data-active="true"] { display: block; }
     @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
-    .credits { margin-top: 24px; color: var(--muted); font-size: 12px; text-align: center; font-family: 'Cinzel', serif; }
-    .credits a { color: var(--rose-red); text-decoration: none; font-weight: bold; }
+    .credits { margin-top: 14px; color: var(--muted); font-size: 12px; text-align: center; }
+    .credits a { color: var(--gold); text-decoration: none; }
   </style>
 </head>
 
@@ -119,15 +103,15 @@
   <div class="wrap">
     <div class="header">
       <div class="brand">
-        <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="28"></div>
+        <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="48"></div>
         <div class="title">
-            <h1>Rose</h1>
-            <p>FEX Manager • ID 1100011</p>
+          <h1>Rose</h1>
+          <p>FEX Manager • ID <span id="id-text">1100011</span></p>
         </div>
       </div>
 
       <div class="controls">
-        <button class="btn" id="copyId">Copiar ID</button>
+        <button class="btn" id="copyId">Copiar código de Amiga</button>
         <button class="btn" id="toggleSnow">Nieve</button>
         <div class="tabs" role="tablist">
           <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Perfil</button>
@@ -148,12 +132,15 @@
               <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
-            <img class="img" src="https://i.ibb.co/6Rqwpfw8/00119862903.png" />
+            <div class="hero-img">
+              <img class="img" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" />
+            </div>
           </div>
+
           <div>
-            <h2 style="font-family: 'Cinzel', serif; color: var(--rose-red);">Rose <span class="chip">ID: 1100011</span></h2>
-            <div style="margin: 15px 0;"><span class="pill">Columbina</span></div>
-            <dl class="meta">
+            <h2 style="font-family: Cinzel; color: var(--text);">Rose <span class="chip" style="font-family: monospace;">ID: 1100011</span></h2>
+            <div style="margin: 15px 0;"><span class="pill">Anemo</span></div>
+            <dl>
               <div class="info">
                 <dt>Acerca de mí</dt>
                 <dd>Sigue los pétalos de rosa donde vayan.</dd>
@@ -162,7 +149,7 @@
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
               <span class="chip">🎂 22 de diciembre</span>
               <span class="chip">♑ Capricornio</span>
-              <span class="chip">🎮 Genshin impact</span>
+              <span class="chip">🎮 Genshin impact, Fortnite, Honkai star rail...</span>
             </div>
           </div>
         </div>
@@ -170,34 +157,38 @@
 
       <section class="sheet" role="tabpanel" id="panel-friends">
         <div class="grid">
-          <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank" rel="noopener">
+          <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/iUI8sm879Nes.png')"></div>
             <div><h3>CheeseOnToast</h3><small>Cheese</small></div>
           </a>
-          <a class="friend" href="https://xat.me/Lenin" target="_blank" rel="noopener">
+          <a class="friend" href="https://xat.me/Lenin" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/2L3sZhbD1x0u.png')"></div>
-            <div><h3>Lenin</h3></div>
+            <div><h3>Lenin</h3><small>Amigo</small></div>
           </a>
-          <a class="friend" href="https://xat.me/Selene" target="_blank" rel="noopener">
+          <a class="friend" href="https://xat.me/Selene" target="_blank">
             <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png')"></div>
-            <div><h3>Selene</h3></div>
+            <div><h3>Selene</h3><small>Seelie</small></div>
           </a>
-          <a class="friend" href="https://xat.me/Marek" target="_blank" rel="noopener">
+          <a class="friend" href="https://xat.me/Marek" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/eFr1zMsaXpb9.png')"></div>
-            <div><h3>Marek</h3></div>
+            <div><h3>Marek</h3><small>Amigo</small></div>
           </a>
-          <a class="friend" href="https://xat.me/FEXBot" target="_blank" rel="noopener">
+          <a class="friend" href="https://xat.me/FEXBot" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/mlRisOkUMCUg.png')"></div>
-            <div><h3>FEXBot</h3></div>
+            <div><h3>FEXBot</h3><small>Fex manager</small></div>
           </a>
         </div>
       </section>
 
       <section class="sheet" role="tabpanel" id="panel-gallery">
         <div class="gallery">
-          <div class="gallery-item"><img src="https://i.ibb.co/6Rqwpfw8/00119862903.png"></div>
-          <div class="gallery-item"><img src="https://i.ibb.co/6Rqwpfw8/00119862903.png"></div>
-          <div class="gallery-item"><img src="https://i.ibb.co/6Rqwpfw8/00119862903.png"></div>
+          <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png"></div>
+          <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png"></div>
+        </div>
+        <div style="margin-top:20px; padding:15px; background:var(--glass); border-radius:10px;">
+           <h4 style="margin:0 0 10px 0; font-family:Cinzel;">Enlaces</h4>
+           <a href="https://xat.me/austin" target="_blank" style="color:var(--gold); text-decoration:none; display:block; margin-bottom:5px;">✦ Created by Austin</a>
+           <a href="https://xat.me/FEX" target="_blank" style="color:var(--gold); text-decoration:none; display:block;">✦ FEX Oficial</a>
         </div>
       </section>
     </div>
@@ -216,14 +207,11 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', function() {
-        this.classList.toggle('zoomed');
-      });
-    });
-
     document.getElementById('copyId').addEventListener('click', async () => {
-      await navigator.clipboard.writeText("1100011");
+      await navigator.clipboard.writeText("/f1100011 Rose");
+      const btn = document.getElementById('copyId'); 
+      btn.innerText = '¡Copiado!'; 
+      setTimeout(() => btn.innerText = 'Copiar código de Amiga', 1500);
     });
 
     (function () {
@@ -232,7 +220,7 @@
       function resize() { w = innerWidth; h = innerHeight; c.width = w; c.height = h; spawn(); }
       function spawn() {
         flakes = Array.from({ length: 120 }, () => ({
-          x: Math.random() * w, y: Math.random() * h, r: 1 + Math.random() * 2, s: .5 + Math.random() * 1.5, a: .5 + Math.random() * .5
+          x: Math.random() * w, y: Math.random() * h, r: 1 + Math.random() * 2, s: 0.5 + Math.random() * 1.5, a: 0.5 + Math.random() * 0.5
         }));
       }
       function step() {
@@ -245,7 +233,9 @@
         requestAnimationFrame(step);
       }
       window.addEventListener('resize', resize); resize(); step();
-      document.getElementById('toggleSnow').addEventListener('click', () => { running = !running; if(running) step(); else ctx.clearRect(0,0,w,h); });
+      document.getElementById('toggleSnow').addEventListener('click', () => { 
+        running = !running; if(running) step(); else ctx.clearRect(0,0,w,h); 
+      });
     })();
   </script>
 </body>
