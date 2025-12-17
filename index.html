@@ -71,6 +71,8 @@
     .info dd { margin: 0; font-size: 16px; color: var(--text); }
 
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-weight: 700; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; font-size: 11px; }
+    .pill svg { width: 18px; height: 18px; fill: var(--cryo); }
+
     .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: var(--glass); font-weight: 500; color: var(--muted); font-size: 12px; }
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -137,10 +139,15 @@
           </div>
           <div>
             <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px; text-shadow: 0 0 8px rgba(255,207,223,0.5);">Rose</h2>
+            
             <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
-                <span class="pill">Cryo</span>
+                <span class="pill">
+                  <svg viewBox="0 0 24 24"><path d="M12,2L10,4.27L10,7L12,9L14,7L14,4.27L12,2M12,22L14,19.73L14,17L12,15L10,17L10,19.73L12,22M22,12L19.73,10L17,10L15,12L17,14L19.73,14L22,12M2,12L4.27,14L7,14L9,12L7,10L4.27,10L2,12M18.36,18.36L16.36,17.23L14.77,15.64L15.64,14.77L17.23,16.36L18.36,18.36M5.64,5.64L7.64,6.77L9.23,8.36L8.36,9.23L6.77,7.64L5.64,5.64M18.36,5.64L17.23,7.64L15.64,9.23L14.77,8.36L16.36,6.77L18.36,5.64M5.64,18.36L6.77,16.36L8.36,14.77L9.23,15.64L7.64,17.23L5.64,18.36Z"/></svg>
+                  Cryo
+                </span>
                 <span class="chip">ID: 1100011</span>
             </div>
+            
             <dl>
               <div class="info">
                 <dt>Acerca de mí</dt>
