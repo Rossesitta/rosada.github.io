@@ -6,17 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rose</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet">
 
   <style>
-    /* =========================
-       THEME ACTUALIZADO
-       ========================= */
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
       --text: #ffcfdf; /* ROSA PASTEL */
-      --muted: #a084ca; /* PÚRPURA OSCURO */
+      --muted: #c3aadd; /* PÚRPURA PASTEL */
       --border: rgba(255, 255, 255, .18);
       --glass: rgba(255, 255, 255, .06);
       --glass-2: rgba(255, 255, 255, .1);
@@ -26,13 +25,14 @@
       --gold-2: rgb(184, 148, 88);
       --gold-ghost: rgba(215, 184, 118, .16);
       
-      /* CAMBIO DE PYRO A ANEMO */
+      /* ANEMO STYLE */
       --anemo: #7af2c1;
-      --anemo-ghost: rgba(122, 242, 193, .18);
+      --anemo-ghost: rgba(122, 242, 193, .15);
 
       --r-lg: 18px;
       --r-md: 14px;
       --r-sm: 10px;
+      --ring: 0 0 0 2px var(--gold-ghost), 0 0 0 6px rgba(215, 184, 118, .08);
     }
 
     body {
@@ -40,60 +40,51 @@
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
-      background-attachment: fixed;
     }
 
     #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-
     .wrap { position: relative; z-index: 1; max-width: 1180px; margin: auto; padding: clamp(14px, 4vw, 28px); padding-top: 62px; }
 
     .header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
-
+    .brand { display: flex; align-items: center; gap: 14px; }
     .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); }
 
     .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; letter-spacing: .6px; font-size: clamp(22px, 2.4vw, 32px); color: var(--text); }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 
+    .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); box-shadow: var(--shadow); }
-    .btn svg { width: 18px; height: 18px; fill: var(--gold); }
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0)); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; }
     .tab[aria-selected="true"] { background: linear-gradient(180deg, rgba(215, 184, 118, .28), rgba(215, 184, 118, .08)); box-shadow: inset 0 0 0 1px var(--gold-ghost); }
 
     .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02)); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
 
-    /* STAGE ANEMO */
-    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(400px 240px at 20% 15%, var(--anemo-ghost), transparent 70%), linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)); }
-    .stage .element { position: absolute; top: 14px; left: 14px; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: radial-gradient(70% 70% at 30% 20%, rgba(255, 255, 255, .28), rgba(255, 255, 255, .06)); border: 1px solid var(--border); }
-    .stage .element svg { width: 28px; height: 28px; fill: var(--anemo); }
-
+    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--anemo-ghost), transparent 70%), linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)); }
     .stage .hero-img { position: absolute; inset: 0; display: grid; place-items: end center; pointer-events: none; z-index: 1; }
-    .stage .hero-img .img { width: auto; max-width: min(92%, 520px); object-fit: fill; display: block; }
+    .stage .hero-img .img { width: auto; max-width: min(92%, 520px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--border); display: block; }
 
-    .idchip { font-family: monospace; font-weight: 800; font-size: 12px; padding: 6px 10px; border-radius: 999px; color: var(--gold-2); background: rgba(215, 184, 118, .14); border: 1px solid var(--border); }
+    .stage .stars { position: absolute; top: 14px; right: 14px; display: flex; gap: 4px; z-index: 2; }
+    .stage .stars svg { width: 20px; height: 20px; fill: var(--gold); }
 
-    .info { padding: 12px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border: 1px solid var(--border); margin-top: 10px;}
+    .info { padding: 12px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border: 1px solid var(--border); }
     .info dt { font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
     .info dd { margin: 0; font-family: Cinzel, serif; font-weight: 800; color: var(--text); }
 
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; font-weight: 800; background: rgba(122, 242, 193, 0.1); border: 1px solid var(--anemo-ghost); color: var(--anemo); }
-    .pill svg { width: 18px; height: 18px; fill: var(--anemo); }
+    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--muted); }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: var(--anemo-ghost); border: 1px solid var(--anemo); color: var(--anemo); text-transform: uppercase; }
 
-    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; font-size: 13px; color: var(--muted); }
-
-    /* FRIENDS GRID */
+    /* Friends Grid */
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
-    .friend:hover { transform: translateY(-2px); background: var(--glass-2); }
-    .avatar { width: 56px; height: 56px; border-radius: 12px; background-size: cover; border: 1px solid var(--border); }
-    .friend small { color: var(--muted); }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; }
 
     [role="tabpanel"] { display: none; animation: fade .35s ease both; }
     [role="tabpanel"][data-active="true"] { display: block; }
     @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
-
-    .credits { margin-top: 20px; text-align: center; font-size: 12px; color: var(--muted); }
+    .credits { margin-top: 14px; color: var(--muted); font-size: 12px; text-align: center; }
     .credits a { color: var(--gold); text-decoration: none; }
   </style>
 </head>
@@ -110,38 +101,47 @@
           <p>FEX Manager • ID <span id="id-text">1100011</span></p>
         </div>
       </div>
+
       <div class="controls">
-        <button class="btn" id="copyId">Copiar código</button>
+        <button class="btn" id="copyId">Copiar código de Amiga</button>
         <button class="btn" id="toggleSnow">Nieve</button>
         <div class="tabs" role="tablist">
-          <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Perfil</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-friends">Amigos</button>
+          <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile" id="tab-profile">Perfil</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-friends" id="tab-friends">Amigos</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-gallery" id="tab-gallery">Galería</button>
         </div>
       </div>
     </div>
 
     <div class="panels">
       <section class="sheet" role="tabpanel" id="panel-profile" data-active="true">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="hero">
           <div class="stage">
-            <div class="element">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm-25 15c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm50 0c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM50 35c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15zm0 25c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z" fill="currentColor"/></svg>
+            <div class="stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
             <div class="hero-img">
               <img class="img" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" />
             </div>
           </div>
-          <div>
-            <h2>Rose <span class="idchip">ID: 1100011</span></h2>
-            <div style="display:flex; gap:10px; margin: 15px 0;">
-              <span class="pill">Anemo</span>
-              <span class="pill">Polearm</span>
+
+          <div class="profile-details">
+            <div class="profile-head">
+              <div class="name"><h2>Rose</h2></div>
+              <span class="idchip">ID: 1100011</span>
             </div>
-            <dl class="info">
-              <dt>Acerca de mí</dt>
-              <dd>Sigue los pétalos de rosa donde vayan.</dd>
+            <div style="margin: 12px 0;"><span class="pill">Anemo</span></div>
+            <dl class="meta">
+              <div class="info">
+                <dt>Acerca de mí</dt>
+                <dd>Sigue los pétalos de rosa donde vayan.</dd>
+              </div>
             </dl>
-            <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:10px;">
+            <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
               <span class="chip">🎂 22 de diciembre</span>
               <span class="chip">♑ Capricornio</span>
             </div>
@@ -157,9 +157,13 @@
           </a>
           <a class="friend" href="https://xat.me/Lenin" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/2L3sZhbD1x0u.png')"></div>
-            <div><h3>Lenin</h3><small>Amigo</small></div>
+            <div><h3>Lenin</h3></div>
           </a>
-          </div>
+        </div>
+      </section>
+
+      <section class="sheet" role="tabpanel" id="panel-gallery">
+        <p style="color:var(--muted)">Galería de Rose...</p>
       </section>
     </div>
 
@@ -168,55 +172,46 @@
 
   <script>
     /* Pestañas */
-    (function() {
+    (function () {
       const tabs = document.querySelectorAll('.tab');
-      const panels = document.querySelectorAll('[role="tabpanel"]');
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const target = tab.getAttribute('aria-controls');
-          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-          panels.forEach(p => p.dataset.active = 'false');
-          tab.setAttribute('aria-selected', 'true');
-          document.getElementById(target).dataset.active = 'true';
-        });
-      });
+      const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+      function activate(id) {
+        tabs.forEach(t => t.setAttribute('aria-selected', t.getAttribute('aria-controls') === id));
+        panels.forEach(p => p.dataset.active = p.id === id);
+      }
+      tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
-    /* Botón Copiar */
+    /* Copiar ID */
     document.getElementById('copyId').addEventListener('click', async () => {
-      const id = document.getElementById('id-text').textContent;
+      const id = "1100011";
       await navigator.clipboard.writeText("/f" + id + " Rose");
-      alert('¡ID Copiada!');
+      const btn = document.getElementById('copyId'); 
+      btn.innerText = '¡Copiado!'; 
+      setTimeout(() => btn.innerText = 'Copiar código de Amiga', 1500);
     });
 
     /* Nieve */
-    (function() {
-      const c = document.getElementById('snow');
-      const ctx = c.getContext('2d');
-      let flakes = [], width, height, running = true;
-      function resize() {
-        width = window.innerWidth; height = window.innerHeight;
-        c.width = width; c.height = height;
-      }
+    (function () {
+      const c = document.getElementById('snow'), ctx = c.getContext('2d');
+      let flakes = [], running = true, w, h;
+      function resize() { w = innerWidth; h = innerHeight; c.width = w; c.height = h; spawn(); }
       function spawn() {
-        flakes = Array.from({length: 100}, () => ({
-          x: Math.random() * width, y: Math.random() * height,
-          r: 1 + Math.random() * 2, s: 0.5 + Math.random() * 1
+        flakes = Array.from({ length: 100 }, () => ({
+          x: Math.random() * w, y: Math.random() * h, r: 1 + Math.random() * 2, s: 0.5 + Math.random() * 1.5, a: 0.5 + Math.random() * 0.5
         }));
       }
-      function draw() {
-        if(!running) return;
-        ctx.clearRect(0,0,width,height);
-        ctx.fillStyle = "white";
-        flakes.forEach(f => {
-          ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); ctx.fill();
-          f.y += f.s; if(f.y > height) f.y = -10;
-        });
-        requestAnimationFrame(draw);
+      function step() {
+        if (!running) return;
+        ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff';
+        for (const f of flakes) {
+          ctx.globalAlpha = f.a; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 7); ctx.fill();
+          f.y += f.s; if (f.y > h) f.y = -10;
+        }
+        requestAnimationFrame(step);
       }
-      window.addEventListener('resize', resize);
-      resize(); spawn(); draw();
-      document.getElementById('toggleSnow').addEventListener('click', () => running = !running);
+      window.addEventListener('resize', resize); resize(); step();
+      document.getElementById('toggleSnow').addEventListener('click', () => { running = !running; if(running) step(); else ctx.clearRect(0,0,w,h); });
     })();
   </script>
 </body>
