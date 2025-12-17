@@ -23,11 +23,11 @@
       --gold: rgb(215, 184, 118);
       --tab-active: #27272a;
       
-      /* CAMBIO A COLOR CRYO */
+      /* COLOR CRYO */
       --cryo: #90e0ef;
       --cryo-ghost: rgba(144, 224, 239, .15);
       
-      /* CAMBIO A ROSA ROJIZO */
+      /* COLOR ROSA ROJIZO */
       --rose-red: #b33951; 
       
       --r-lg: 18px;
@@ -48,7 +48,13 @@
 
     .header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
     .brand { display: flex; align-items: center; gap: 14px; }
-    .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    
+    /* MANTIENE TU CRESTA CIRCULAR */
+    .crest { 
+      width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; 
+      background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); 
+      border: 1px solid var(--border); box-shadow: var(--shadow); 
+    }
 
     /* TITULO EN ROSA ROJIZO */
     .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; letter-spacing: .6px; font-size: clamp(22px, 2.4vw, 32px); color: var(--rose-red); }
@@ -61,10 +67,17 @@
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.2s; }
     .tab[aria-selected="true"] { background: var(--tab-active); }
 
+    /* MANTIENE TUS FONDOS ORIGINALES */
     .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, .5); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
     
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
-    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); }
+    
+    /* FONDO DE PERSONAJE MANTENIDO */
+    .stage { 
+      position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; 
+      border: 1px solid var(--border); 
+      background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); 
+    }
     .stage .img { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: auto; height: 110%; object-fit: contain; pointer-events: none; }
     .stage .stars { position: absolute; top: 14px; right: 14px; display: flex; gap: 4px; z-index: 2; }
     .stage .stars svg { width: 20px; height: 20px; fill: var(--rose-red); }
@@ -77,6 +90,7 @@
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; }
     .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--muted); font-size: 13px; }
 
+    /* MANTIENE TUS AMIGOS Y AVATARES CIRCULARES */
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); }
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
