@@ -26,8 +26,9 @@
       --r-lg: 18px;
       --r-md: 14px;
       
+      /* COLORES UNIFICADOS */
       --rosa-pastel: #ffb7d5;
-      --panel-bg: rgba(11, 16, 32, 0.4); 
+      --panel-bg: rgba(11, 16, 32, 0.4); /* El púrpura oscuro transparente */
     }
 
     body {
@@ -56,6 +57,7 @@
     }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
 
+    /* BOTONES SUPERIORES: Ahora con el mismo fondo oscuro transparente */
     .btn { 
       border: 1px solid var(--border); 
       background: var(--panel-bg); 
@@ -77,6 +79,7 @@
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     
+    /* PESTAÑAS: Fondo oscuro y texto rosa pastel */
     .tab { 
       appearance: none; 
       border: 1px solid var(--border); 
@@ -98,6 +101,7 @@
       box-shadow: 0 0 15px rgba(74, 48, 109, 0.5);
     }
 
+    /* RECUADRO GRANDE */
     .sheet { 
       border: 1px solid var(--border); 
       border-radius: var(--r-lg); 
@@ -107,12 +111,6 @@
       padding: clamp(16px, 2.8vw, 24px); 
     }
     
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
-    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
-    .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
-    .friend small { color: var(--muted); font-size: 12px; }
-
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
     .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(255, 207, 223, 0.2); margin-bottom: 30px; cursor: pointer;}
@@ -125,6 +123,12 @@
     .pill svg { width: 18px; height: 18px; fill: var(--cryo); }
 
     .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: rgba(255,255,255,0.05); font-weight: 600; color: var(--rosa-pastel); font-size: 12px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
+    .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
+    .friend small { color: var(--muted); font-size: 12px; }
 
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
@@ -199,7 +203,7 @@
             <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;">
               <span class="chip">🎂 22 de Diciembre</span>
               <span class="chip">♑ Capricornio</span>
-              <span class="chip">🎮 Genshin & HSR</span>
+              <span class="chip">🎮 Genshin impact, honkai star rail, Marvel rivals, Fortnite</span>
             </div>
           </div>
         </div>
@@ -209,19 +213,32 @@
         <div class="grid">
           <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/iUI8sm879Nes.png')"></div>
-            <div>
-              <h3>CheeseOnToast</h3>
-              <small>Manager</small>
-            </div>
+            <div><h3>CheeseOnToast</h3><small>Cheese & Cheesy</small></div>
           </a>
           <a class="friend" href="https://xat.me/Selene" target="_blank">
             <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png')"></div>
-            <div>
-              <h3>Selene</h3>
-              <small>Seelie</small>
-            </div>
+            <div><h3>Selene</h3><small>Seelie</small></div>
           </a>
-        </div>
+          <a class="friend" href="https://xat.me/jadiction" target="_blank">
+            <div class="avatar" style="background-image:url('https://github.com/Jadiction.png')"></div>
+            <div><h3>Jadiction</h3><small>Jad</small></div>
+            </a>
+          <a class="friend" href="https://xat.me/lenin" target="_blank">
+            <div class="avatar" style="background-image:url('https://xatimg.com/image/2L3sZhbD1x0u.png')"></div>
+            <div><h3>Lenin</h3><small>Amigo</small></div>
+            </a>
+          <a class="friend" href="https://xat.me/marek" target="_blank">
+            <div class="avatar" style="background-image:url('https://xatimg.com/image/eFr1zMsaXpb9.png')"></div>
+            <div><h3>Marek</h3><small>Amigo</small></div>
+            </a>
+          <a class="friend" href="https://xat.me/fexbot" target="_blank">
+            <div class="avatar" style="background-image:url('https://xatimg.com/image/mlRisOkUMCUg.png')"></div>
+            <div><h3>FEXBot</h3><small>FEXY</small></div>
+            </a>
+          <a class="friend" href="https://xat.me/barbiedesire" target="_blank">
+            <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/50505.png')"></div>
+            <div><h3>Baby</h3><small>Bunnie</small></div>
+            </div>
       </section>
 
       <section class="sheet" role="tabpanel" id="panel-gallery">
@@ -232,7 +249,7 @@
         
         <div class="links-box">
            <h4>Enlaces</h4>
-           <a href="https://xat.me/austin" target="_blank">✦ Created by Austin</a>
+           <a href="https://fexbots.com" target="_blank">✦ FEXBots oficial sitio</a>
            <a href="https://xat.me/FEX" target="_blank">✦ FEX Oficial</a>
            <a href="https://xat.com/Fex" target="_blank">✦ Chat FEX</a>
         </div>
