@@ -18,13 +18,12 @@
       --muted: #c3aadd; 
       --border: rgba(255, 255, 255, .18);
       --glass: rgba(255, 255, 255, .06);
-      --glass-2: rgba(255, 255, 255, .1);
       --shadow: 0 10px 30px rgba(0, 0, 0, .35);
       --gold: rgb(215, 184, 118);
       
-      /* COLORES DE PESTAÑAS */
-      --tab-active-bg: #4a306d;      /* Fondo Púrpura */
-      --tab-active-text: #b33951;    /* Texto Rosa Rojizo */
+      /* COLORES DE PESTAÑAS SELECCIONADAS */
+      --tab-selected-bg: #ffffff;    /* Fondo Blanco cuando se selecciona */
+      --tab-selected-text: #b33951;  /* Texto Rosa Rojizo cuando se selecciona */
       
       --cryo: #90e0ef;
       --cryo-ghost: rgba(144, 224, 239, .15);
@@ -54,7 +53,6 @@
       font-size: clamp(22px, 2.4vw, 32px); 
       color: var(--text); 
       text-transform: uppercase;
-      /* Brillo sutil con el rosa rojizo */
       text-shadow: 0 0 10px rgba(179, 57, 81, 0.6), 0 0 20px rgba(255, 207, 223, 0.2); 
     }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
@@ -64,11 +62,11 @@
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
     
-    /* AJUSTE SOLICITADO: FONDO PÚRPURA, TEXTO ROSA ROJIZO */
+    /* CAMBIO SOLICITADO: FONDO BLANCO Y TEXTO ROSA AL SELECCIONAR */
     .tab[aria-selected="true"] { 
-      background: var(--tab-active-bg); 
-      color: var(--tab-active-text); 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: var(--tab-selected-bg); 
+      color: var(--tab-selected-text); 
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
     }
 
     .sheet { 
@@ -80,7 +78,6 @@
       padding: clamp(16px, 2.8vw, 24px); 
     }
     
-    /* ... (El resto del CSS se mantiene igual para conservar el diseño) ... */
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
     .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(255, 207, 223, 0.2); margin-bottom: 30px; cursor: pointer;}
@@ -147,7 +144,6 @@
           </div>
           <div>
             <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px;">Rose</h2>
-            
             <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
                 <span class="pill">
                   <svg viewBox="0 0 24 24"><path d="M12,2L10,4.27L10,7L12,9L14,7L14,4.27L12,2M12,22L14,19.73L14,17L12,15L10,17L10,19.73L12,22M22,12L19.73,10L17,10L15,12L17,14L19.73,14L22,12M2,12L4.27,14L7,14L9,12L7,10L4.27,10L2,12M18.36,18.36L16.36,17.23L14.77,15.64L15.64,14.77L17.23,16.36L18.36,18.36M5.64,5.64L7.64,6.77L9.23,8.36L8.36,9.23L6.77,7.64L5.64,5.64M18.36,5.64L17.23,7.64L15.64,9.23L14.77,8.36L16.36,6.77L18.36,5.64M5.64,18.36L6.77,16.36L8.36,14.77L9.23,15.64L7.64,17.23L5.64,18.36Z"/></svg>
@@ -155,18 +151,12 @@
                 </span>
                 <span class="chip">ID: 1100011</span>
             </div>
-            
             <dl>
               <div class="info">
                 <dt>Acerca de mí</dt>
                 <dd>Sigue los pétalos de rosa donde vayan.</dd>
               </div>
             </dl>
-            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;">
-              <span class="chip">🎂 22 de Diciembre</span>
-              <span class="chip">♑ Capricornio</span>
-              <span class="chip">🎮 Genshin & HSR</span>
-            </div>
           </div>
         </div>
       </section>
@@ -189,18 +179,11 @@
           <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png" class="zoomable"></div>
           <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" class="zoomable"></div>
         </div>
-        <div class="links-box">
-           <h4>Enlaces</h4>
-           <a href="https://xat.me/austin" target="_blank">✦ Created by Austin</a>
-           <a href="https://xat.me/FEX" target="_blank">✦ FEX Oficial</a>
-           <a href="https://xat.com/Fex" target="_blank">✦ Chat FEX</a>
-        </div>
       </section>
     </div>
   </div>
 
   <script>
-    /* Funcionalidad de pestañas */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
@@ -211,7 +194,6 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
-    /* Zoom de imágenes */
     const overlay = document.getElementById('zoom-overlay');
     const zoomImg = document.getElementById('zoom-img');
     document.querySelectorAll('.zoomable').forEach(img => {
@@ -221,7 +203,6 @@
       });
     });
 
-    /* Copiar ID */
     document.getElementById('copyId').addEventListener('click', async () => {
       await navigator.clipboard.writeText("/f1100011 Rose");
       const btn = document.getElementById('copyId'); 
@@ -229,7 +210,6 @@
       setTimeout(() => btn.innerText = 'Copiar código de amiga', 1500);
     });
 
-    /* Efecto de nieve */
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
