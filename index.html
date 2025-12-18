@@ -107,6 +107,12 @@
       padding: clamp(16px, 2.8vw, 24px); 
     }
     
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
+    .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
+    .friend small { color: var(--muted); font-size: 12px; }
+
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
     .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(255, 207, 223, 0.2); margin-bottom: 30px; cursor: pointer;}
@@ -119,13 +125,6 @@
     .pill svg { width: 18px; height: 18px; fill: var(--cryo); }
 
     .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: rgba(255,255,255,0.05); font-weight: 600; color: var(--rosa-pastel); font-size: 12px; }
-
-    /* ESTILO DE AMIGOS - MANTENIDO */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
-    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
-    .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
-    .friend small { color: var(--muted); font-size: 12px; }
 
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
@@ -197,6 +196,11 @@
                 <dd>Sigue los pétalos de rosa donde vayan.</dd>
               </div>
             </dl>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;">
+              <span class="chip">🎂 22 de Diciembre</span>
+              <span class="chip">♑ Capricornio</span>
+              <span class="chip">🎮 Genshin & HSR</span>
+            </div>
           </div>
         </div>
       </section>
@@ -224,6 +228,13 @@
         <div class="gallery">
           <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png" class="zoomable"></div>
           <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" class="zoomable"></div>
+        </div>
+        
+        <div class="links-box">
+           <h4>Enlaces</h4>
+           <a href="https://xat.me/austin" target="_blank">✦ Created by Austin</a>
+           <a href="https://xat.me/FEX" target="_blank">✦ FEX Oficial</a>
+           <a href="https://xat.com/Fex" target="_blank">✦ Chat FEX</a>
         </div>
       </section>
     </div>
@@ -269,7 +280,7 @@
         if (!running) return;
         ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff';
         for (const f of flakes) {
-          ctx.globalAlpha = f.a; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 7); ctx.fill();
+          ctx.globalAlpha = f.a; ctx.beginPath(); ctx.arc(f.y, f.r, f.r, 0, 7); ctx.fill();
           f.y += f.s; if (f.y > h) f.y = -10;
         }
         requestAnimationFrame(step);
