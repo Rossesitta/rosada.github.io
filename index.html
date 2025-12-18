@@ -22,9 +22,9 @@
       --shadow: 0 10px 30px rgba(0, 0, 0, .35);
       --gold: rgb(215, 184, 118);
       
-      /* NUEVO COLOR ROSA ROJIZO PARA LAS PESTAÑAS */
-      --tab-active: #b33951; 
-      --tab-hover: rgba(179, 57, 81, 0.4);
+      /* COLORES DE PESTAÑAS */
+      --tab-active-bg: #4a306d;      /* Fondo Púrpura */
+      --tab-active-text: #b33951;    /* Texto Rosa Rojizo */
       
       --cryo: #90e0ef;
       --cryo-ghost: rgba(144, 224, 239, .15);
@@ -54,17 +54,22 @@
       font-size: clamp(22px, 2.4vw, 32px); 
       color: var(--text); 
       text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(255, 207, 223, 0.8), 0 0 20px rgba(255, 207, 223, 0.4); 
+      /* Brillo sutil con el rosa rojizo */
+      text-shadow: 0 0 10px rgba(179, 57, 81, 0.6), 0 0 20px rgba(255, 207, 223, 0.2); 
     }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
 
     .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
 
-    /* ESTILO DE PESTAÑAS */
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
-    .tab:hover { background: var(--tab-hover); }
-    .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; box-shadow: 0 0 15px rgba(179, 57, 81, 0.4); }
+    
+    /* AJUSTE SOLICITADO: FONDO PÚRPURA, TEXTO ROSA ROJIZO */
+    .tab[aria-selected="true"] { 
+      background: var(--tab-active-bg); 
+      color: var(--tab-active-text); 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
     .sheet { 
       border: 1px solid var(--border); 
@@ -75,39 +80,29 @@
       padding: clamp(16px, 2.8vw, 24px); 
     }
     
+    /* ... (El resto del CSS se mantiene igual para conservar el diseño) ... */
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
     .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(255, 207, 223, 0.2); margin-bottom: 30px; cursor: pointer;}
-
     .info { padding: 15px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border-left: 3px solid var(--text); margin-bottom: 12px;}
     .info dt { font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 600; letter-spacing: 1px; }
     .info dd { margin: 0; font-size: 16px; color: var(--text); }
-
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-weight: 700; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; font-size: 11px; }
     .pill svg { width: 18px; height: 18px; fill: var(--cryo); }
-
     .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: var(--glass); font-weight: 500; color: var(--muted); font-size: 12px; }
-
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
     .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
     .friend small { color: var(--muted); font-size: 12px; }
-
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-
-    #zoom-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000;
-      display: none; justify-content: center; align-items: center; cursor: zoom-out;
-    }
+    #zoom-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; display: none; justify-content: center; align-items: center; cursor: zoom-out; }
     #zoom-overlay img { max-width: 90%; max-height: 90%; border-radius: 10px; border: 2px solid var(--text); }
-
     .links-box { margin-top:20px; padding:20px; background:var(--glass); border-radius:12px; border: 1px solid var(--border); }
     .links-box h4 { margin:0 0 15px 0; font-family: 'Cinzel'; text-transform: uppercase; color: var(--text); }
     .links-box a { color: var(--gold); text-decoration: none; display: block; margin-bottom: 8px; font-size: 13px; }
-
     [role="tabpanel"] { display: none; }
     [role="tabpanel"][data-active="true"] { display: block; animation: fade .35s ease both; }
     @keyframes fade { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
@@ -151,7 +146,7 @@
             </div>
           </div>
           <div>
-            <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px; text-shadow: 0 0 8px rgba(255,207,223,0.5);">Rose</h2>
+            <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px;">Rose</h2>
             
             <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
                 <span class="pill">
@@ -205,6 +200,7 @@
   </div>
 
   <script>
+    /* Funcionalidad de pestañas */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
@@ -215,6 +211,7 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
+    /* Zoom de imágenes */
     const overlay = document.getElementById('zoom-overlay');
     const zoomImg = document.getElementById('zoom-img');
     document.querySelectorAll('.zoomable').forEach(img => {
@@ -224,6 +221,7 @@
       });
     });
 
+    /* Copiar ID */
     document.getElementById('copyId').addEventListener('click', async () => {
       await navigator.clipboard.writeText("/f1100011 Rose");
       const btn = document.getElementById('copyId'); 
@@ -231,6 +229,7 @@
       setTimeout(() => btn.innerText = 'Copiar código de amiga', 1500);
     });
 
+    /* Efecto de nieve */
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
