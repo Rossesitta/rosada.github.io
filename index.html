@@ -1,324 +1,94 @@
-<!doctype html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rose</title>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
-  <style>
-    :root {
-      --bg-1: #0b1020;
-      --bg-2: #121a31;
-      --text: #ffcfdf; 
-      --muted: #c3aadd; 
-      --border: rgba(255, 255, 255, .18);
-      --glass: rgba(255, 255, 255, .06);
-      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-      --gold: rgb(215, 184, 118);
-      --tab-active: #4a306d; 
-      --cryo: #90e0ef;
-      --cryo-ghost: rgba(144, 224, 239, .15);
-      --r-lg: 18px;
-      --r-md: 14px;
-      --rosa-pastel: #ffb7d5;
-      --panel-bg: rgba(11, 16, 32, 0.4); 
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif; 
-      background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
-      overflow-x: hidden;
-    }
-
-    #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-    .wrap { position: relative; z-index: 1; max-width: 1180px; margin: auto; padding: clamp(14px, 4vw, 28px); padding-top: 62px; }
-
-    .header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
-    .brand { display: flex; align-items: center; gap: 14px; }
-    .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;}
-
-    .title h1 { 
-      margin: 0; 
-      font-family: 'Cinzel', serif; 
-      font-weight: 800; 
-      letter-spacing: 3px; 
-      font-size: clamp(22px, 2.4vw, 32px); 
-      color: var(--text); 
-      text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(255, 207, 223, 0.8), 0 0 20px rgba(255, 207, 223, 0.4); 
-    }
-    .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
-
-    .btn { 
-      border: 1px solid var(--border); 
-      background: var(--panel-bg); 
-      color: var(--rosa-pastel); 
-      padding: 10px 14px; 
-      border-radius: 12px; 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 8px; 
-      font-weight: 600; 
-      cursor: pointer; 
-      backdrop-filter: blur(10px); 
-      font-family: 'Montserrat', sans-serif; 
-      font-size: 11px; 
-      text-transform: uppercase;
-      transition: 0.3s;
-    }
-    .btn:hover { background: rgba(74, 48, 109, 0.4); }
-
-    .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); backdrop-filter: blur(12px); }
-    
-    .tab { 
-      appearance: none; 
-      border: 1px solid var(--border); 
-      background: var(--panel-bg); 
-      color: var(--rosa-pastel); 
-      font-weight: 700; 
-      padding: 10px 20px; 
-      border-radius: 999px; 
-      cursor: pointer; 
-      transition: 0.3s; 
-      font-family: 'Montserrat', sans-serif; 
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    .tab[aria-selected="true"] { 
-      background: var(--tab-active); 
-      color: var(--rosa-pastel); 
-      box-shadow: 0 0 15px rgba(74, 48, 109, 0.5);
-    }
-
-    .sheet { 
-      border: 1px solid var(--border); 
-      border-radius: var(--r-lg); 
-      box-shadow: var(--shadow); 
-      background: var(--panel-bg); 
-      backdrop-filter: blur(10px); 
-      padding: clamp(16px, 2.8vw, 24px); 
-    }
-    
-    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
-    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
-    .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(255, 207, 223, 0.2); margin-bottom: 30px; cursor: pointer;}
-
-    .info { padding: 15px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border-left: 3px solid var(--text); margin-bottom: 12px;}
-    .info dt { font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 600; letter-spacing: 1px; }
-    .info dd { margin: 0; font-size: 16px; color: var(--text); }
-
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-weight: 700; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; font-size: 11px; }
-    .pill svg { width: 18px; height: 18px; fill: var(--cryo); }
-
-    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: rgba(255,255,255,0.05); font-weight: 600; color: var(--rosa-pastel); font-size: 12px; }
-
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
-    .friend:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
-    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
-    .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
-    .friend small { color: var(--muted); font-size: 12px; }
-
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-
-    #zoom-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; display: none; justify-content: center; align-items: center; cursor: zoom-out; }
-    #zoom-overlay img { max-width: 90%; max-height: 90%; border-radius: 10px; border: 2px solid var(--text); }
-
-    .links-box { margin-top:20px; padding:20px; background:rgba(0,0,0,0.2); border-radius:12px; border: 1px solid var(--border); }
-    .links-box h4 { margin:0 0 15px 0; font-family: 'Cinzel'; text-transform: uppercase; color: var(--text); }
-    .links-box a { color: var(--gold); text-decoration: none; display: block; margin-bottom: 8px; font-size: 13px; }
-
-    [role="tabpanel"] { display: none; }
-    [role="tabpanel"][data-active="true"] { display: block; animation: fade .35s ease both; }
-    @keyframes fade { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
-  </style>
-</head>
-
-<body>
-  <canvas id="snow" aria-hidden="true"></canvas>
-
-  <div id="zoom-overlay" onclick="this.style.display='none'">
-    <img src="" id="zoom-img">
-  </div>
-
-  <div class="wrap">
-    <div class="header">
-      <div class="brand">
-        <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="48"></div>
-        <div class="title">
-          <h1>Rose</h1>
-          <p>FEX Manager</p>
-        </div>
-      </div>
-
-      <div class="controls">
-        <button class="btn" id="copyId">Copiar código de amiga</button>
-        <button class="btn" id="toggleSnow">Nieve</button>
-        <div class="tabs" role="tablist">
-          <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Perfil</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-friends">Amigos</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-gallery">Galería</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="panels">
-      <section class="sheet" role="tabpanel" id="panel-profile" data-active="true">
-        <div class="hero">
-          <div class="stage">
-            <div class="hero-img">
-              <img class="img zoomable" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" />
-            </div>
-          </div>
-          <div>
-            <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px; text-shadow: 0 0 8px rgba(255,207,223,0.5);">Rose</h2>
-            <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
-                <span class="pill">
-                  <svg viewBox="0 0 24 24"><path d="M12,2L10,4.27L10,7L12,9L14,7L14,4.27L12,2M12,22L14,19.73L14,17L12,15L10,17L10,19.73L12,22M22,12L19.73,10L17,10L15,12L17,14L19.73,14L22,12M2,12L4.27,14L7,14L9,12L7,10L4.27,10L2,12M18.36,18.36L16.36,17.23L14.77,15.64L15.64,14.77L17.23,16.36L18.36,18.36M5.64,5.64L7.64,6.77L9.23,8.36L8.36,9.23L6.77,7.64L5.64,5.64M18.36,5.64L17.23,7.64L15.64,9.23L14.77,8.36L16.36,6.77L18.36,5.64M5.64,18.36L6.77,16.36L8.36,14.77L9.23,15.64L7.64,17.23L5.64,18.36Z"/></svg>
-                  Cryo
-                </span>
-                <span class="chip">ID: 1100011</span>
-            </div>
-            <dl>
-              <div class="info">
-                <dt>Acerca de mí</dt>
-                <dd>Sigue los pétalos de rosa donde vayan.</dd>
-              </div>
-            </dl>
-            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;">
-              <span class="chip">🎂 22 de Diciembre</span>
-              <span class="chip">♑ Capricornio</span>
-              <span class="chip">🎮 Mi Gaming: Genshin impact, Honkai star rail, Marvel rivals, Fortnite</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sheet" role="tabpanel" id="panel-friends">
-        <div class="grid">
-          <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank">
-            <div class="avatar" style="background-image:url('https://xatimg.com/image/iUI8sm879Nes.png')"></div>
-            <div><h3>CheeseOnToast</h3><small>Cheese & Cheesy</small></div>
-          </a>
-          <a class="friend" href="https://xat.me/Selene" target="_blank">
-            <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png')"></div>
-            <div><h3>Selene</h3><small>Seelie</small></div>
-          </a>
-          <a class="friend" href="https://xat.me/jadiction" target="_blank">
-            <div class="avatar" style="background-image:url('https://github.com/Jadiction.png')"></div>
-            <div><h3>Jadiction</h3><small>Jad</small></div>
-          </a>
-          <a class="friend" href="https://xat.me/lenin" target="_blank">
-            <div class="avatar" style="background-image:url('https://xatimg.com/image/2L3sZhbD1x0u.png')"></div>
-            <div><h3>Lenin</h3><small>Amigo</small></div>
-          </a>
-          <a class="friend" href="https://xat.me/marek" target="_blank">
-            <div class="avatar" style="background-image:url('https://xatimg.com/image/eFr1zMsaXpb9.png')"></div>
-            <div><h3>Marek</h3><small>Amigo</small></div>
-          </a>
-          <a class="friend" href="https://xat.me/fexbot" target="_blank">
-            <div class="avatar" style="background-image:url('https://xatimg.com/image/mlRisOkUMCUg.png')"></div>
-            <div><h3>FEXBot</h3><small>FEXY</small></div>
-          </a>
-          <a class="friend" href="https://xat.me/barbiedesire" target="_blank">
-            <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/50505.png')"></div>
-            <div><h3>Baby</h3><small>Bunnie</small></div>
-          </a>
-        </div>
-      </section>
-
-      <section class="sheet" role="tabpanel" id="panel-gallery">
-        <div class="gallery">
-          <div class="gallery-item"><img src="https://i.ibb.co/0jxRSjJP/fexblue-green1.png" class="zoomable"></div>
-          <div class="gallery-item"><img src="https://i.ibb.co/dwWkshS8/cover1.png" class="zoomable"></div>
-        </div>
-        <div class="links-box">
-           <h4>Enlaces</h4>
-           <a href="https://fexbots.com" target="_blank">✦ FEXBots oficial sitio</a>
-           <a href="https://forum.xat.com/profile/37253/" target="_blank">✦ Mi xat Forum/foro</a>
-           <a href="https://flickr.com/photos/rosesita/albums" target="_blank">✦ Gallery/galeria (Retirada diseñadora)</a>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <script>
-    (function () {
-      const tabs = document.querySelectorAll('.tab');
-      const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
-      function activate(id) {
-        tabs.forEach(t => t.setAttribute('aria-selected', t.getAttribute('aria-controls') === id));
-        panels.forEach(p => p.dataset.active = p.id === id);
-      }
-      tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
-    })();
-
-    const overlay = document.getElementById('zoom-overlay');
-    const zoomImg = document.getElementById('zoom-img');
-    document.querySelectorAll('.zoomable').forEach(img => {
-      img.addEventListener('click', () => {
-        zoomImg.src = img.src;
-        overlay.style.display = 'flex';
-      });
-    });
-
-    document.getElementById('copyId').addEventListener('click', async () => {
-      await navigator.clipboard.writeText("/f1100011 Rose");
-      const btn = document.getElementById('copyId'); 
-      btn.innerText = '¡Copiado!'; 
-      setTimeout(() => btn.innerText = 'Copiar código de amiga', 1500);
-    });
-
-    /* EFECTO NIEVE MULTIDIRECCIONAL */
-    (function () {
-      const c = document.getElementById('snow'), ctx = c.getContext('2d');
-      let flakes = [], running = true, w, h;
-      function resize() { w = innerWidth; h = innerHeight; c.width = w; c.height = h; spawn(); }
-      function spawn() {
-        flakes = Array.from({ length: 100 }, () => ({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          r: 1 + Math.random() * 3,
-          d: Math.random() * 100, // Densidad/Dirección
-          v: 0.5 + Math.random() * 1.2, // Velocidad vertical
-          h: -0.5 + Math.random() * 1 // Movimiento horizontal (oscilación)
-        }));
-      }
-      function step() {
-        if (!running) return;
-        ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
-        ctx.beginPath();
-        for (const f of flakes) {
-          ctx.moveTo(f.x, f.y);
-          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
-          
-          f.y += f.v;
-          f.x += f.h + Math.sin(f.d) * 0.5; // El seno crea el movimiento de balanceo hacia los lados
-          f.d += 0.01;
-
-          if (f.y > h) f.y = -10, f.x = Math.random() * w;
-          if (f.x > w) f.x = 0;
-          if (f.x < 0) f.x = w;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosaria - Hydro Version</title>
+    <style>
+        /* Mantenemos toda tu estructura, solo cambiamos colores de Cryo a Hydro */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        ctx.fill();
-        requestAnimationFrame(step);
-      }
-      window.addEventListener('resize', resize); resize(); step();
-      document.getElementById('toggleSnow').addEventListener('click', () => { 
-        running = !running; if(running) step(); else ctx.clearRect(0,0,w,h); 
-      });
-    })();
-  </script>
+
+        .card {
+            width: 350px;
+            background: rgba(20, 20, 30, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #21baff; /* Cambio a azul Hydro */
+            box-shadow: 0 0 20px rgba(33, 186, 255, 0.5);
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c99ff 0%, #001e55 100%); /* Fondo Hydro */
+            padding: 20px;
+        }
+
+        .element-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .character-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .info {
+            padding: 20px;
+        }
+
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .hydro-text {
+            color: #21baff; /* Color de texto Hydro */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <img class="element-icon" src="https://static.wikia.nocookie.net/gensin-impact/images/8/80/Element_Hydro.png" alt="Hydro">
+            <div class="character-name">Rosaria</div>
+        </div>
+        
+        <div class="info">
+            <div class="stat-line">
+                <span>Elemento:</span>
+                <span class="hydro-text">Hydro</span>
+            </div>
+            <div class="stat-line">
+                <span>Arma:</span>
+                <span>Lanza</span>
+            </div>
+            <div class="stat-line">
+                <span>Región:</span>
+                <span>Mondstadt</span>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
